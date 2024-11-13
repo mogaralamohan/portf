@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const loader = document.getElementById('loader');
     const mainContent = document.getElementById('main-content');
 
+    // Reset loader visibility
+    loader.style.display = 'block'; // Ensure loader is visible on reload
+    mainContent.style.display = 'none'; // Hide main content initially
+
     loader.classList.add("loader-hidden");
 
     loader.addEventListener("transitionend", () => {
@@ -34,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in');
+            } else {
+                entry.target.classList.remove('fade-in'); // Allow re-triggering
             }
         });
     }, { threshold: 0.5 });
